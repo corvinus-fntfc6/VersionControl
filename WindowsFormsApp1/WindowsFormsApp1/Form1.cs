@@ -25,6 +25,8 @@ namespace WindowsFormsApp1
         {            
             InitializeComponent();
             LoadData();
+            dataGridView1.DataSource = Flats;
+            CreateExcel();
         }
 
         public void LoadData()
