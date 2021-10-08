@@ -14,6 +14,8 @@ namespace WindowsFormsApp1
     {
         public Form1()
         {
+           // RealEstateEntities context = new RealEstateEntities();
+
             InitializeComponent();
         }
     }
