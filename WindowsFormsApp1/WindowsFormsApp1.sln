@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{E29F5427-19AA-413F-804B-D05388E6C35E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows_Portfolie", "Windows_Portfolie\Windows_Portfolie.csproj", "{7C2598AE-BDC7-437D-88E6-6036FE3C7BA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E29F5427-19AA-413F-804B-D05388E6C35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E29F5427-19AA-413F-804B-D05388E6C35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E29F5427-19AA-413F-804B-D05388E6C35E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2598AE-BDC7-437D-88E6-6036FE3C7BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2598AE-BDC7-437D-88E6-6036FE3C7BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2598AE-BDC7-437D-88E6-6036FE3C7BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2598AE-BDC7-437D-88E6-6036FE3C7BA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
