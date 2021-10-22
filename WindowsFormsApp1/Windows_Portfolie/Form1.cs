@@ -15,6 +15,8 @@ namespace Windows_Portfolie
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
+        List<decimal> profitsOrdered = new List<decimal>();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,24 +24,22 @@ namespace Windows_Portfolie
             dataGridView1.DataSource = Ticks;
             CreatePortfolio();
 
-            List<decimal> Nyereségek = new List<decimal>();
-            int intervalum = 30;
-            DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
-            DateTime záróDátum = new DateTime(2016, 12, 30);
-            TimeSpan z = záróDátum - kezdőDátum;
-            for (int i = 0; i < z.Days - intervalum; i++)
+            List<decimal> profits = new List<decimal>();
+            int interval = 30;
+            DateTime startingDate = (from x in Ticks select x.TradingDay).Min();
+            DateTime endDate = new DateTime(2016, 12, 30);
+            TimeSpan z = endDate - startingDate;
+
+            for (int i = 0; i < z.Days - interval; i++)
             {
-                decimal ny = GetPortfolioValue(kezdőDátum.AddDays(i + intervalum))
-                           - GetPortfolioValue(kezdőDátum.AddDays(i));
-                Nyereségek.Add(ny);
+                decimal ny = GetPortfolioValue(startingDate.AddDays(i + interval))
+                           - GetPortfolioValue(startingDate.AddDays(i));
+                profits.Add(ny);
                 Console.WriteLine(i + " " + ny);
             }
 
-            var nyereségekRendezve = (from x in Nyereségek
-                                      orderby x
-                                      select x)
-                                        .ToList();
-            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
+            this.profitsOrdered = (from x in profits orderby x select x).ToList();
+            MessageBox.Show(this.profitsOrdered[this.profitsOrdered.Count() / 5].ToString());
         }
 
         private void CreatePortfolio()
@@ -65,5 +65,25 @@ namespace Windows_Portfolie
             return value;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Szöveges file|*.txt";
+            dialog.Title = "Profitok elmentése";
+            dialog.FileName = "profits.txt";
+
+            if (dialog.ShowDialog() == DialogResult.OK && dialog.FileName != "")
+            {
+                using (System.IO.StreamWriter w = new System.IO.StreamWriter(dialog.FileName))
+                {
+                    foreach (decimal d in this.profitsOrdered)
+                    {
+                        w.WriteLine(d);
+                    }
+                }
+
+                MessageBox.Show("Mentés sikeres!");
+            }
+        }
     }
 }
