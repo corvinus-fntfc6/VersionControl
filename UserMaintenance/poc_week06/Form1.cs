@@ -17,11 +17,14 @@ namespace poc_week06
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
+        
         public Form1()
         {
             InitializeComponent();
             RefreshData();
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
 
         }
 
