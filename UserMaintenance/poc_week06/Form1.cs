@@ -20,8 +20,9 @@ namespace poc_week06
         public Form1()
         {
             InitializeComponent();
-            GetExchangeRates();
+            RefreshData();
             dataGridView1.DataSource = Rates;
+
         }
 
         private void GetExchangeRates()
@@ -30,9 +31,9 @@ namespace poc_week06
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                currencyNames = comboBox1.SelectedItem.ToString(),
+                startDate = dateTimePicker1.ToString(),
+                endDate = dateTimePicker2.ToString()
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -79,6 +80,22 @@ namespace poc_week06
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
+            GetExchangeRates();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
