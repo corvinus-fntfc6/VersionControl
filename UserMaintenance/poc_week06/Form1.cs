@@ -22,6 +22,7 @@ namespace poc_week06
         public Form1()
         {
             InitializeComponent();
+            GetCurrencies();
             RefreshData();
             dataGridView1.DataSource = Rates;
             comboBox1.DataSource = Currencies;
@@ -99,6 +100,44 @@ namespace poc_week06
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void GetCurrencies()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = "EUR",
+                startDate = "2020-01-01",
+                endDate = "2020-06-30"
+            };
+
+            var response = mnbService.GetExchangeRates(request);
+
+            var result = response.GetExchangeRatesResult;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+
+                if (childElement == null) continue;
+            }
         }
     }
 }
