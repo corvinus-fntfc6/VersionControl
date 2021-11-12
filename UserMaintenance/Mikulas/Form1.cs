@@ -20,6 +20,19 @@ namespace Mikulas
             get { return _factory; }
             set { _factory = value; }
         }
+
+        private Toy _nextToy;
+
+        private IToyFactory _factoryz;
+        public IToyFactory Factory
+        {
+            get { return _factoryz; }
+            set
+            {
+                _factoryz = value;
+                DisplayNext();
+            }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +62,27 @@ namespace Mikulas
                 mainPanel.Controls.Remove(oldestToy);
                 _toys.Remove(oldestToy);
             }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Factory = new CarFactory();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Factory = new BallFactory();
+        }
+
+        private void DisplayNext()
+        {
+            if (_nextToy != null)
+                Controls.Remove(_nextToy);
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = lblNext.Top + lblNext.Height + 20;
+            _nextToy.Left = lblNext.Left;
+            Controls.Add(_nextToy);
         }
     }
 }
