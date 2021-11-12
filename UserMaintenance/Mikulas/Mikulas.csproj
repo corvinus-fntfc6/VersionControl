@@ -48,6 +48,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IToyFactory.cs" />
     <Compile Include="Abstractions\Toy.cs">
       <SubType>Component</SubType>
     </Compile>
