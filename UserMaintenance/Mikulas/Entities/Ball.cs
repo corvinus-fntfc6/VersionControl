@@ -9,8 +9,15 @@ using System.Windows.Forms;
 
 namespace Mikulas.Entities
 {
-    public class Toy : Abstractions.Toy
+    public class Ball : Abstractions.Toy
     {
+        public SolidBrush BallColor { get; private set; }
+
+        public Ball(Color color)
+        {
+            BallColor = new SolidBrush(color);
+        }
+
         protected override void DrawImage(Graphics g)
         {
             g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);

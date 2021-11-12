@@ -74,6 +74,9 @@ namespace Mikulas
         private void button2_Click(object sender, EventArgs e)
         {
             Factory = new BallFactory();
+            {
+                BallColor = button3Color.BackColor
+            };
         }
 
         private void DisplayNext()
@@ -88,6 +91,7 @@ namespace Mikulas
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             var button = (Button)sender;
             var colorPicker = new ColorDialog();
 

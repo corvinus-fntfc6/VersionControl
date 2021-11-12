@@ -11,7 +11,7 @@ namespace Mikulas.Entities
     {
         public Abstractions.Toy CreateNew()
         {
-            return new Toy();
+            return new Ball();
         }
     }
 }
