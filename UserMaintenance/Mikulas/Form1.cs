@@ -1,4 +1,5 @@
-﻿using Mikulas.Entities;
+﻿using Mikulas.Abstractions;
+using Mikulas.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
