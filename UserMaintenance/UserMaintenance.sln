@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikulas", "Mikulas\Mikulas.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestExample", "..\..\..\..\Downloads\UnitTestExample\UnitTestExample\UnitTestExample.csproj", "{F1FBDBB6-FEBA-421B-A647-484ED380E500}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unittest", "unittest", "{5095F4A2-8E1F-461A-8E5B-18645CF4CF3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestExample.Test", "UnitTestExample.Test\UnitTestExample.Test.csproj", "{A530F303-3B00-4AB5-B588-92D4BFD1AEBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,17 @@ Global
 		{F1FBDBB6-FEBA-421B-A647-484ED380E500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1FBDBB6-FEBA-421B-A647-484ED380E500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1FBDBB6-FEBA-421B-A647-484ED380E500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A530F303-3B00-4AB5-B588-92D4BFD1AEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A530F303-3B00-4AB5-B588-92D4BFD1AEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A530F303-3B00-4AB5-B588-92D4BFD1AEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A530F303-3B00-4AB5-B588-92D4BFD1AEBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1FBDBB6-FEBA-421B-A647-484ED380E500} = {5095F4A2-8E1F-461A-8E5B-18645CF4CF3C}
+		{A530F303-3B00-4AB5-B588-92D4BFD1AEBB} = {5095F4A2-8E1F-461A-8E5B-18645CF4CF3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F98749B-38EF-4D1D-A70C-34F823559165}
