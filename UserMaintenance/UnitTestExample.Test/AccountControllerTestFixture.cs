@@ -11,7 +11,7 @@ namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
-        //teszt4
+        //teszt4 
         [
             Test,
             TestCase("irf@uni-corvinus.hu", "Abcd1234")
