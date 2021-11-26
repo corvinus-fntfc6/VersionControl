@@ -11,6 +11,36 @@ namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
+        //teszt4
+        [
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234")
+        ]
+        public void TestRegisterApplicationException(string newEmail, string newPassword)
+        {
+            // Arrange
+            var accountServiceMock = new Mock<IAccountManager>(MockBehavior.Strict);
+            accountServiceMock
+                .Setup(m => m.CreateAccount(It.IsAny<Account>()))
+                .Throws<ApplicationException>();
+            var accountController = new AccountController();
+            accountController.AccountManager = accountServiceMock.Object;
+
+            // Act
+            try
+            {
+                var actualResult = accountController.Register(newEmail, newPassword);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOf<ApplicationException>(ex);
+            }
+
+            // Assert
+        }
+
+        //teszt3
         [
             Test,
             TestCase("irf@uni-corvinus", "Abcd1234"),
@@ -38,6 +68,13 @@ namespace UnitTestExample.Test
 
             // Assert
         }
+
+        //teszt2
+        [
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "Abcd1234567"),
+        ]
         public void TestRegisterHappyPath(string email, string password)
         {
             // Arrange
@@ -57,6 +94,15 @@ namespace UnitTestExample.Test
             Assert.AreNotEqual(Guid.Empty, actualResult.ID);
             accountServiceMock.Verify(m => m.CreateAccount(actualResult), Times.Once);
         }
+
+        //teszt1
+        [
+            Test,
+            TestCase("abcd1234", false),
+            TestCase("irf@uni-corvinus", false),
+            TestCase("irf.uni-corvinus.hu", false),
+            TestCase("irf@uni-corvinus.hu", true)
+        ]
         public void TestValidateEmail(string email, bool expectedResult)
         {
             // Arrange
