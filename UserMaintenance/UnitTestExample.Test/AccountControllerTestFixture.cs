@@ -20,6 +20,8 @@ namespace UnitTestExample.Test
         {
             // Arrange
             var accountController = new AccountController();
+            //Add reference to unittestexample nem sikerült
+            //fél óráig hagytam, hogy executeoljon, aztán meguntam
 
             // Act
             var actualResult = accountController.ValidateEmail(email);
